@@ -5,9 +5,30 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  width: 100vw;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap:1rem;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.divider {
+  width: 20rem;
+  height: 0.2rem;
+  margin: 1rem;
+  background-color:powderblue;
+}
+.thumbHodler{
+  width: 10rem;
+  height:10rem;
+}
+.thumb{
+  width:100%;
+  height:100%;
 }
