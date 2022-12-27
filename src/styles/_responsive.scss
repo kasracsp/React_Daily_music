@@ -1,0 +1,46 @@
+@include sm-screen {
+  .header {
+    .navbar {
+      .logo {
+        flex-grow: 0;
+      }
+
+      .right-navbar {
+        flex-grow: 1;
+      }
+
+      .left-navbar {
+        .library {
+          .library-items {
+            right: auto;
+            left: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include lg-screen {
+  .header {
+    .navbar {
+      .logo {
+        padding-right: 3rem;
+      }
+
+      .left-navbar {
+        @include myDisplay(row, center, center);
+        gap: 2rem;
+
+        .nav-item {
+          .nav-text {
+            display: block;
+          }
+          .end-icon {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}

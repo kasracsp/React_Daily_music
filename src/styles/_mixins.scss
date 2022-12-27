@@ -1,0 +1,26 @@
+@mixin myDisplay($dir,$jc,$ai){
+  display: flex;
+  flex-direction: $dir;
+  justify-content: $jc;
+  align-items: $ai;
+}
+@mixin xs-screen {
+  @media screen and(min-width:576px) {
+    @content;
+  }
+}
+@mixin sm-screen {
+  @media screen and(min-width:768px) {
+    @content;
+  }
+}
+@mixin md-screen {
+  @media screen and(min-width:900px) {
+    @content;
+  }
+}
+@mixin lg-screen {
+  @media screen and(min-width:1200px) {
+    @content;
+  }
+}

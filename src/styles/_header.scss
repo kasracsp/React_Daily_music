@@ -1,0 +1,121 @@
+.header {
+  width: 100%;
+  border-bottom: 1px solid var(--less-bright-color);
+  position: sticky;
+  top:0;
+  left: 0;
+  backdrop-filter: blur(10px);
+
+  .navbar {
+    @include myDisplay(row, flex-start, center);
+    // padding: 1rem;
+    
+    .logo {
+      font-weight: 500;
+      font-size: 1rem;
+      text-transform: capitalize;
+      padding:1rem;
+      //need media
+      flex-grow: 1;
+      
+      a{
+        font-family: "Montserrat",serif;
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+    }
+
+    .left-navbar {
+      @include myDisplay(row, center, center);
+      //need media
+      gap: 0rem;
+
+      .nav-item {
+        @include myDisplay(row, center, center);
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        cursor: pointer;
+
+        &.active {
+          color: var(--active-color);
+        }
+
+        &:hover {
+          color: var(--hover-color);
+        }
+
+        .nav-text {
+          transition: 0.2s;
+          font-family: "Oswald", serif;
+          font-weight: 500;
+          // need media
+          display: none;
+        }
+
+        .end-icon {
+          // need media
+          display: none;
+        }
+      }
+
+      .library {
+        position: relative;
+        padding: 0.2rem;
+
+        &:hover {
+          .nav-item{
+            color: var(--hover-color);
+          }
+
+          .library-items {
+            display: block;
+            
+          }
+        }
+
+        .library-items {
+          display: none;
+          position: absolute;
+          backdrop-filter: blur(10px);
+          right: 0;
+          top: 3rem;
+          border: 1px solid var(--less-bright-color);
+          width: 20rem;
+          border-radius: 0.5rem;
+          padding-top: 0.5rem;
+          padding-bottom: 0.5rem;
+
+          .library-item {
+            width: 100%;
+
+            .library-link {
+              width: 100%;
+              display: block;
+              padding: 1rem;
+              font-size: 1.1rem;
+              text-transform: capitalize;
+              border-bottom: 1px solid var(--less-bright-color);
+
+              &:hover {
+                background-color: var(--fading-color);
+              }
+
+              &.active {
+                background-color: var(--less-bright-color);
+              }
+            }
+
+            &:last-child {
+              .library-link {
+                border-bottom: none;
+              }
+            }
+          }
+        }
+      }
+    }
+    .right-navbar{
+      @include myDisplay(row,flex-end,center)
+    }
+  }
+}
