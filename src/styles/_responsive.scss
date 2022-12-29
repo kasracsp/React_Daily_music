@@ -1,12 +1,27 @@
+@include xs-screen {
+  .header {
+    .navbar {
+      .logo {
+        a {
+          font-size: 1.5rem;
+        }
+      }
+      .left-navbar {
+        .library {
+          .library-items {
+            width: 20rem;
+          }
+        }
+      }
+    }
+  }
+}
 @include sm-screen {
   .header {
     .navbar {
       .logo {
         flex-grow: 0;
-      }
-
-      .right-navbar {
-        flex-grow: 1;
+        padding: 1rem;
       }
 
       .left-navbar {
@@ -14,6 +29,61 @@
           .library-items {
             right: auto;
             left: 0;
+          }
+        }
+      }
+
+      .right-navbar {
+        flex-grow: 1;
+        gap: 2rem;
+        padding-left: 1rem;
+
+        .signin {
+          .material-icons {
+            display: none;
+          }
+
+          .nav-text {
+            display: block;
+            min-width: 4.8rem;
+          }
+        }
+        .search-container {
+          max-width: 20rem;
+          .search-box {
+            .search-input {
+              display: flex;
+            }
+
+            .search-btn {
+              position: absolute;
+              right: 1rem;
+              top: 50%;
+              transform: translate(0, -50%);
+              color: var(--shadow-color);
+              font-size: 1.5rem;
+            }
+
+            .erase-btn {
+              right: 3.2rem;
+            }
+          }
+
+          &.active {
+            position: relative;
+            max-width: 30rem;
+            .search-box {
+              .search-input {
+                padding: 1.25rem 6rem 1.25rem 1.5rem;
+              }
+
+              .search-btn {
+                display: flex;
+              }
+            }
+          }
+          .cancel-search {
+            display: none;
           }
         }
       }

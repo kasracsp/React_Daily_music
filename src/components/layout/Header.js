@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const location = useLocation();
+  const searchRef = useRef();
+  const [search, setSearch] = useState("");
+  const [typing, setTyping] = useState(false);
 
-  console.log(location.pathname);
+  useEffect(() => {
+    let handler = (event) => {
+      if (!searchRef.current.contains(event.target)) {
+        setTyping(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  });
+  console.log(search);
+  console.log(typing);
+  // console.log(location.pathname);
   return (
     <div className="header">
       <div className="container xl">
@@ -22,6 +40,7 @@ const Header = () => {
               <p className="nav-text">home</p>
             </Link>
             <Link
+              to="chart/podcasts"
               className={`nav-item ${
                 location.pathname === "/podcasts" && "active"
               }`}
@@ -38,9 +57,9 @@ const Header = () => {
               <ul className="library-items">
                 <li className="library-item">
                   <Link
-                    to="albums"
+                    to="chart/albums"
                     className={`library-link ${
-                      location.pathname === "/albums" && "active"
+                      location.pathname === "/chart/albums" && "active"
                     }`}
                   >
                     albums
@@ -48,8 +67,9 @@ const Header = () => {
                 </li>
                 <li className="library-item">
                   <Link
+                    to="chart/artists"
                     className={`library-link ${
-                      location.pathname === "/artists" && "active"
+                      location.pathname === "/chart/artists" && "active"
                     }`}
                   >
                     artists
@@ -57,8 +77,9 @@ const Header = () => {
                 </li>
                 <li className="library-item">
                   <Link
+                    to="chart/playlists"
                     className={`library-link ${
-                      location.pathname === "/playlists" && "active"
+                      location.pathname === "/chart/playlists" && "active"
                     }`}
                   >
                     palylists
@@ -66,8 +87,9 @@ const Header = () => {
                 </li>
                 <li className="library-item">
                   <Link
+                    to="chart/tracks"
                     className={`library-link ${
-                      location.pathname === "/tracks" && "active"
+                      location.pathname === "/chart/tracks" && "active"
                     }`}
                   >
                     tracks
@@ -77,11 +99,41 @@ const Header = () => {
             </div>
           </div>
           <div className="right-navbar">
-            {/* <Link className="signin">
-            <span className="material-icons">account_circle</span>
-            <p className="nav-text">sign in</p>
-          </Link> */}
-            hello
+            <div
+              className={`search-container ${typing && "active"}`}
+              ref={searchRef}
+            >
+              <Link
+                to="search"
+                className="search-box"
+                onClick={() => setTyping(true)}
+              >
+                <input
+                  className="search-input"
+                  type="text"
+                  placeholder="Search"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                />
+                {typing && search.length>0 && (
+                  <button onClick={()=>setSearch("")} className="material-icons erase-btn">cancel</button>
+                )}
+                <span className="material-icons search-btn">search</span>
+              </Link>
+              {typing && (
+                <button
+                  className="cancel-search"
+                  onClick={() => setTyping(false)}
+                >
+                  cancel
+                </button>
+              )}
+            </div>
+
+            <Link to="/signin" className="signin">
+              <span className="material-icons">account_circle</span>
+              <p className="nav-text">sign in</p>
+            </Link>
           </div>
         </div>
       </div>
