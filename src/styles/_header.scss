@@ -4,7 +4,8 @@
   position: sticky;
   top: 0;
   left: 0;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(40px);
+  z-index: 99;
 
   .navbar {
     @include myDisplay(row, flex-start, center);
@@ -69,7 +70,7 @@
         .library-items {
           display: none;
           position: absolute;
-          backdrop-filter: blur(10px);
+          backdrop-filter: blur(40px);
           right: 0;
           top: 3rem;
           border: 1px solid var(--less-bright-color);

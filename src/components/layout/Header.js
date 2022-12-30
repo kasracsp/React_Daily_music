@@ -20,8 +20,8 @@ const Header = () => {
       document.removeEventListener("mousedown", handler);
     };
   });
-  console.log(search);
-  console.log(typing);
+  // console.log(search);
+  // console.log(typing);
   // console.log(location.pathname);
   return (
     <div className="header">
@@ -42,7 +42,7 @@ const Header = () => {
             <Link
               to="chart/podcasts"
               className={`nav-item ${
-                location.pathname === "/podcasts" && "active"
+                location.pathname === "/chart/podcasts" && "active"
               }`}
             >
               <span className="material-icons">podcasts</span>

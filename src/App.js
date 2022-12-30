@@ -9,7 +9,6 @@ import Search from "./pages/Search";
 function App() {
 useEffect(()=>{
   axios.get("https://api.deezer.com/chart")
-  // axios.get("https://api.deezer.com/podcast/65490170")
   .then(res=>console.log(res.data))
 },[])
 
