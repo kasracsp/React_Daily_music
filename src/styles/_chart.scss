@@ -1,0 +1,13 @@
+.chart-title {
+  padding: 3rem 2rem 1rem;
+  font-family: "Montserrat", serif;
+  text-transform: capitalize;
+}
+.chart-grid {
+  display: grid;
+  width: 100%;
+  padding: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(160px, auto));
+  gap: 2rem;
+  place-content: center;
+}

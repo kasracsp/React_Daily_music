@@ -64,6 +64,15 @@
     white-space: nowrap;
   }
 
+  a{
+    width: 100%;
+    display: block;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
   .slide-title {
     color: var(--bright-color);
     font-family: "Roboto", serif;
