@@ -2,70 +2,9 @@ import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Link } from "react-router-dom";
+import Card from "../../shared/Card";
 
-const Carrousel = () => {
-  const carrouselList = [
-    {
-      image:
-        "https://m.media-amazon.com/images/I/41nmT9dY5EL._UX250_FMwebp_QL85_.jpg",
-      artist: "gipsy king",
-      title: "halelua warmplay warmplay warmplay warmplay ",
-    },
-    {
-      image:
-        "https://m.media-amazon.com/images/I/41s9dkecCOL._UX250_FMwebp_QL85_.jpg",
-      artist: "coldplay king",
-      title: "halelua",
-    },
-    {
-      image:
-        "https://m.media-amazon.com/images/I/51ZulxmF20L._UX250_FMwebp_QL85_.jpg",
-      artist: "gipsy king",
-      title: "sholsaea",
-    },
-    {
-      image:
-        "https://m.media-amazon.com/images/I/41otdejFdTL._UX250_FMwebp_QL85_.jpg",
-      artist: "warmplay",
-      title: "warmplay warmplay warmplay warmplay",
-    },
-    {
-      image:
-        "https://m.media-amazon.com/images/I/41vDP5rLixL._UX250_FMwebp_QL85_.jpg",
-      artist: "warmplay warmplay warmplay warmplay",
-      title: "warmplay warmplay",
-    },
-    {
-      image:
-        "https://m.media-amazon.com/images/I/41nmT9dY5EL._UX250_FMwebp_QL85_.jpg",
-      artist: "gipsy king",
-      title: "halelua warmplay warmplay warmplay warmplay ",
-    },
-    {
-      image:
-        "https://m.media-amazon.com/images/I/41s9dkecCOL._UX250_FMwebp_QL85_.jpg",
-      artist: "coldplay king",
-      title: "halelua",
-    },
-    {
-      image:
-        "https://m.media-amazon.com/images/I/51ZulxmF20L._UX250_FMwebp_QL85_.jpg",
-      artist: "gipsy king",
-      title: "sholsaea",
-    },
-    {
-      image:
-        "https://m.media-amazon.com/images/I/41otdejFdTL._UX250_FMwebp_QL85_.jpg",
-      artist: "warmplay",
-      title: "warmplay warmplay warmplay warmplay",
-    },
-    {
-      image:
-        "https://m.media-amazon.com/images/I/41vDP5rLixL._UX250_FMwebp_QL85_.jpg",
-      artist: "warmplay warmplay warmplay warmplay",
-      title: "warmplay warmplay",
-    },
-  ];
+const Carrousel = ({categoryTitle,categoryList}) => {
   const [mySwiper, setMySwiper] = useState({});
   const [currentIndex, setCurrentIndex] = useState(0);
   return (
@@ -95,7 +34,7 @@ const Carrousel = () => {
         }}
       >
         <div className="carrousel-btns">
-          <h2>albums</h2>
+          <h2>{categoryTitle}</h2>
           <button
             className="swipperPrev"
             onClick={() => mySwiper.slidePrev()}
@@ -110,29 +49,53 @@ const Carrousel = () => {
           >
             <span className="material-icons">chevron_right</span>
           </button>
-          <Link className="see-all">see all</Link>
+          <Link to={`chart/${categoryTitle}`} className="see-all">see all</Link>
         </div>
 
-        {carrouselList.map((item, index) => (
+        {categoryList.map((item, index) => (
           <SwiperSlide key={index} className="slide">
-            <div className="image-container">
-              <Link>
-                <img src={item.image} alt={item.title} />
-              </Link>
-              <div className="overlay">
-                <button
-                  className="material-icons"
-                  onClick={() => console.log("play")}
-                >
-                  play_arrow
-                </button>
-              </div>
-              <div className="shadow-overlay"></div>
-            </div>
-            <Link>
-              <p className="slide-title">{item.title}</p>
-            </Link>
-            <p className="slide-artist">{item.artist}</p>
+            {categoryTitle === "albums" && (
+              <Card
+                categoryTitle={categoryTitle}
+                image={item.cover_medium}
+                title={item.title}
+                name={item.artist.name}
+                id={item.id}
+              />
+            )}
+            {categoryTitle === "artists" && (
+              <Card
+                categoryTitle={categoryTitle}
+                image={item.picture_medium}
+                title={item.name}
+                id={item.id}
+              />
+            )}
+            {categoryTitle === "playlists" && (
+              <Card
+                categoryTitle={categoryTitle}
+                image={item.picture_medium}
+                title={item.title}
+                id={item.id}
+              />
+            )}
+            {categoryTitle === "podcasts" && (
+              <Card
+                categoryTitle={categoryTitle}
+                image={item.picture_medium}
+                title={item.title}
+                id={item.id}
+              />
+            )}
+            {categoryTitle === "tracks" && (
+              <Card
+                categoryTitle={categoryTitle}
+                image={item.album.cover_medium}
+                title={item.title}
+                name={item.artist.name}
+                id={item.id}
+              />
+            )}
           </SwiperSlide>
         ))}
       </Swiper>
