@@ -89,6 +89,18 @@
       }
     }
   }
+  .music-wraper {
+    .music-box {
+      .music-header {
+        @include myDisplay(row, flex-start, flex-start);
+
+        .music-details {
+          @include myDisplay(column, flex-start, flex-start);
+          text-align: left;
+        }
+      }
+    }
+  }
 }
 
 @include lg-screen {

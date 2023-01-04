@@ -1,0 +1,7 @@
+.music-body {
+  @include myDisplay(column, center, center);
+  width: 100%;
+  gap: 2rem;
+  padding: 2rem;
+  background: linear-gradient(to bottom,transparent 10%,var(--dark-color) 90%);
+}

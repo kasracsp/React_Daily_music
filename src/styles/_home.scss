@@ -1,9 +1,7 @@
 .home{
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  @include myDisplay(column,flex-start,flex-start);
   gap: 5rem;
   padding: 1rem;
   margin-top: 2rem;
+  margin-bottom: 2rem;
 }
