@@ -3,9 +3,11 @@
   background-position: top;
   background-attachment: fixed;
   background-size: cover;
+  width: 100%;
   @include myDisplay(column, flex-start, flex-start);
 
   .music-box {
+    width: 100%;
     @include myDisplay(column, flex-start, flex-start);
     background-color: var(--less-dark-color);
     backdrop-filter: blur(10px);

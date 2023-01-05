@@ -26,6 +26,7 @@ const Albums = () => {
         >
           <div className="music-box">
             <MusicHeader
+              tracks={songsState.songs.tracks.data}
               title={songsState.songs.title}
               thumbnail={songsState.songs.cover_medium}
               artist={songsState.songs.artist.name}
@@ -33,7 +34,7 @@ const Albums = () => {
               quantity={songsState.songs.tracks.data.length}
               duration={calcDuration(songsState.songs.tracks.data)}
             />
-            <MusicBody />
+            <MusicBody tracks={songsState.songs.tracks.data}/>
           </div>
         </div>
       )}

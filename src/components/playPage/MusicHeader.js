@@ -1,7 +1,10 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { setTime } from "../../helper/functions";
+import { setPlaylist } from "../../redux/playlist/playlistAction";
 
 const MusicHeader = ({
+  tracks,
   title,
   thumbnail,
   artist,
@@ -9,6 +12,8 @@ const MusicHeader = ({
   quantity,
   duration,
 }) => {
+  const dispatch=useDispatch()
+
   return (
     <div className="music-header">
       <div className="music-thumb">
@@ -21,7 +26,7 @@ const MusicHeader = ({
         <p className="music-duration">
           {quantity} {quantity > 1 ? "songs" : "song"} . {setTime(duration)}
         </p>
-        <button onClick={()=>console.log('play')} className="music-play-btn music-btn">
+        <button onClick={()=>dispatch(setPlaylist(tracks))} className="music-play-btn music-btn">
           <span className="material-icons">play_arrow</span>
           <p>play</p>
         </button>

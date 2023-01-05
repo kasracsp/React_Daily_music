@@ -1,0 +1,80 @@
+.music-card {
+  width: 100%;
+  @include myDisplay(row, flex-start, center);
+  border-bottom: 1px solid var(--less-bright-color);
+  padding: 1rem;
+  gap: 1rem;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .music-index {
+    font-family: "Oswald", serif;
+    min-width: 24px;
+    text-align-last: center;
+  }
+
+  .music-thumb-box {
+    width: 3rem;
+    min-width: 3rem;
+    position: relative;
+    img {
+      width: 100%;
+      aspect-ratio: 1;
+    }
+
+    .music-card-btns {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      @include myDisplay(row, center, center);
+      display: none;
+      background-color: var(--less-dark-color);
+
+      button {
+        background: transparent;
+        color: var(--bright-color);
+
+        &:hover {
+          color: var(--hover-color);
+        }
+        &:active {
+          color: var(--active-color);
+        }
+      }
+    }
+  }
+
+  .music-card-details {
+    @include myDisplay(column, flex-start, space-around);
+    flex-grow: 1;
+    width: 30vw;
+    p {
+      width: 100%;
+      text-overflow: ellipsis;
+      word-break: break-all;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .music-card-artist{
+      font-size: 0.8rem;
+      color: var(--shadow-color);
+    }
+  }
+
+  .music-card-duration {
+    font-family: "Oswald",serif;
+  }
+
+  &:hover {
+    background-color: var(--less-bright-color);
+  }
+
+  &:hover .music-card-btns {
+    display: flex;
+  }
+}
