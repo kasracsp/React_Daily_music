@@ -48,7 +48,7 @@ const Footer = () => {
   }, [playlistState]);
 
   return (
-    <div>
+    <div className="footer">
       {playlistState.isActive && (
         <audio
           ref={audioRef}

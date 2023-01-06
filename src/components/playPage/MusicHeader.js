@@ -15,10 +15,6 @@ const MusicHeader = ({
 }) => {
   const dispatch = useDispatch();
   const playlistState = useSelector((state) => state.playlistState);
-  console.log(id, playlistState.playlistId);
-  if (playlistState.playlistId.toString() === id.toString()) {
-    console.log("Equal");
-  }
   return (
     <div className="music-header">
       <div className="music-thumb">

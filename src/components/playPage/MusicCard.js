@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import { playPause, setPlaylist } from "../../redux/playlist/playlistAction";
 
 const MusicCard = ({ tracks, index, title, artist, thumb, duration, id }) => {
-  // console.log(index, title, artist, thumb, duration);
   const params=useParams()
   const playlistState = useSelector((state) => state.playlistState);
   const dispatch = useDispatch();
@@ -21,11 +20,9 @@ const MusicCard = ({ tracks, index, title, artist, thumb, duration, id }) => {
       <p className="music-index">{index + 1}</p>
       <div className="music-thumb-box">
         <img src={thumb} alt={title} />
-        {
-          Object.keys(playlistState.playlist).length > 0
-          &&
+        
         <div className="music-card-btns">
-          {playlistState.playlist[playlistState.currentSong].id === id ? (
+          {(Object.keys(playlistState.playlist).length > 0 && playlistState.playlist[playlistState.currentSong].id === id) ? (
             playlistState.isPlaying ? (
               <button onClick={()=>dispatch(playPause(false))}>
                 <span className="material-icons">pause</span>
@@ -41,7 +38,7 @@ const MusicCard = ({ tracks, index, title, artist, thumb, duration, id }) => {
             </button>
           )}
         </div>
-      }
+      
       </div>
       <div className="music-card-details">
         <p className="music-card-title">{title}</p>
