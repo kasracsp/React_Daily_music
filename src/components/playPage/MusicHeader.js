@@ -1,7 +1,7 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setTime } from "../../helper/functions";
-import { setPlaylist } from "../../redux/playlist/playlistAction";
+import { playPause, setPlaylist } from "../../redux/playlist/playlistAction";
 
 const MusicHeader = ({
   tracks,
@@ -11,9 +11,14 @@ const MusicHeader = ({
   type,
   quantity,
   duration,
+  id,
 }) => {
-  const dispatch=useDispatch()
-
+  const dispatch = useDispatch();
+  const playlistState = useSelector((state) => state.playlistState);
+  console.log(id, playlistState.playlistId);
+  if (playlistState.playlistId.toString() === id.toString()) {
+    console.log("Equal");
+  }
   return (
     <div className="music-header">
       <div className="music-thumb">
@@ -26,14 +31,31 @@ const MusicHeader = ({
         <p className="music-duration">
           {quantity} {quantity > 1 ? "songs" : "song"} . {setTime(duration)}
         </p>
-        <button onClick={()=>dispatch(setPlaylist(tracks))} className="music-play-btn music-btn">
-          <span className="material-icons">play_arrow</span>
-          <p>play</p>
-        </button>
-        <button onClick={()=>console.log('pause')} className="music-pause-btn music-btn">
-          <span className="material-icons">pause</span>
-          <p>pause</p>
-        </button>
+        {playlistState.playlistId.toString() !== id.toString() ? (
+          <button
+            onClick={() => dispatch(setPlaylist({ tracks, id, index: 0 }))}
+            className="music-play-btn music-btn"
+          >
+            <span className="material-icons">play_arrow</span>
+            <p>play</p>
+          </button>
+        ) : playlistState.isPlaying ? (
+          <button
+            onClick={() => dispatch(playPause(false))}
+            className="music-pause-btn music-btn"
+          >
+            <span className="material-icons">pause</span>
+            <p>pause</p>
+          </button>
+        ) : (
+          <button
+            onClick={() => dispatch(playPause(true))}
+            className="music-play-btn music-btn"
+          >
+            <span className="material-icons">play_arrow</span>
+            <p>play</p>
+          </button>
+        )}
       </div>
     </div>
   );

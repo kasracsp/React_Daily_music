@@ -60,21 +60,26 @@
       white-space: nowrap;
     }
 
-    .music-card-artist{
+    .music-card-artist {
       font-size: 0.8rem;
       color: var(--shadow-color);
     }
   }
 
   .music-card-duration {
-    font-family: "Oswald",serif;
+    font-family: "Oswald", serif;
   }
 
-  &:hover {
+  &.active {
     background-color: var(--less-bright-color);
+  }
+  
+  &:hover {
+    background-color: var(--fading-color);
   }
 
   &:hover .music-card-btns {
     display: flex;
   }
+
 }

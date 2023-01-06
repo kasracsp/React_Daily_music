@@ -7,7 +7,7 @@ const Playlists = () => {
   const params=useParams()
   const dispatch=useDispatch()
   const songsState=useSelector(state=>state.songsState)
-  console.log(songsState)
+  // console.log(songsState)
   useEffect(()=>{
     dispatch(fetchPlaylists(params.slug))
   },[])

@@ -10,7 +10,7 @@ const Albums = () => {
   const params = useParams();
   const dispatch = useDispatch();
   const songsState = useSelector((state) => state.songsState);
-  console.log(songsState);
+  // console.log(songsState);
   useEffect(() => {
     dispatch(fetchAlbum(params.slug));
   }, []);
@@ -33,6 +33,7 @@ const Albums = () => {
               type={songsState.songs.type}
               quantity={songsState.songs.tracks.data.length}
               duration={calcDuration(songsState.songs.tracks.data)}
+              id={songsState.songs.id}
             />
             <MusicBody tracks={songsState.songs.tracks.data}/>
           </div>

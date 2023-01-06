@@ -29,4 +29,15 @@ const setSongTime = (time) => {
   return minutes + ":" + seconds;
 };
 
-export { getChoosenCategory, calcDuration, setTime, setSongTime };
+const calcShuffleNumber = (listLength) => {
+  const result = Math.floor(Math.random() * listLength);
+  return result;
+};
+
+export {
+  getChoosenCategory,
+  calcDuration,
+  setTime,
+  setSongTime,
+  calcShuffleNumber,
+};

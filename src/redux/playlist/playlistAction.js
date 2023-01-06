@@ -4,6 +4,18 @@ const setPlaylist=(list)=>{
     payload:list
   }
 }
+const playPause=(condition)=>{
+  return{
+    type:"PLAY_PAUSE",
+    payload:condition,
+  }
+}
+const autoEnded=(index)=>{
+  return{
+    type:"AUTO_ENDED",
+    payload:index
+  }
+}
 
-export {setPlaylist}
+export {setPlaylist,playPause,autoEnded}
 

@@ -10,11 +10,12 @@ const MusicBody = ({ tracks }) => {
         <MusicCard
           key={track.id}
           tracks={tracks}
-          index={index + 1}
+          index={index}
           title={track.title}
           artist={track.artist.name}
           thumb={track.album.cover_small}
           duration={setSongTime(track.duration)}
+          id={track.id}
         />
       ))}
     </div>
