@@ -1,7 +1,12 @@
-const setPlaylist=(list)=>{
+const setSongs=(list)=>{
   return{
-    type:"SET_PLAYLIST",
+    type:"SET_SONGS",
     payload:list
+  }
+}
+const clearSongs=()=>{
+  return{
+    type:"CLEAR_SONGS"
   }
 }
 const playPause=(condition)=>{
@@ -17,5 +22,5 @@ const autoEnded=(index)=>{
   }
 }
 
-export {setPlaylist,playPause,autoEnded}
+export {setSongs,clearSongs,playPause,autoEnded}
 

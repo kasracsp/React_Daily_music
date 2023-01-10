@@ -1,26 +1,31 @@
 const initialState = {
   playlist: [],
-  playlistId:0,
+  playlistId: 0,
   currentSong: 0,
-  shuffle: false,
   isActive: false,
   isPlaying: false,
-  isMuted:false,
-  volume:0.5,
-  repeat:false,
-  repeateOne:false,
+  category:''
 };
 
-const playlistReducer = (state = initialState, action) => {
+const songsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "SET_PLAYLIST":
+    case "SET_SONGS":
       return {
         ...state,
         playlist: action.payload.tracks,
         isActive: true,
         isPlaying: true,
         currentSong: action.payload.index,
-        playlistId:action.payload.id,
+        playlistId: action.payload.id,
+        category:action.payload.category
+      };
+    case "CLEAR_SONGS":
+      return {
+        playlist: [],
+        playlistId: 0,
+        currentSong: 0,
+        isActive: false,
+        isPlaying: false,
       };
     case "PLAY_PAUSE":
       return {
@@ -30,7 +35,7 @@ const playlistReducer = (state = initialState, action) => {
     case "AUTO_ENDED":
       return {
         ...state,
-        currentSong:action.payload,
+        currentSong: action.payload,
       };
 
     default:
@@ -38,4 +43,4 @@ const playlistReducer = (state = initialState, action) => {
   }
 };
 
-export default playlistReducer;
+export default songsReducer;

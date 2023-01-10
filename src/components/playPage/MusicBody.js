@@ -2,7 +2,7 @@ import React from "react";
 import { setSongTime } from "../../helper/functions";
 import MusicCard from "./MusicCard";
 
-const MusicBody = ({ tracks }) => {
+const MusicBody = ({ tracks,category }) => {
   // console.log(tracks);
   return (
     <div className="music-body">
@@ -16,6 +16,7 @@ const MusicBody = ({ tracks }) => {
           thumb={track.album.cover_small}
           duration={setSongTime(track.duration)}
           id={track.id}
+          category={category}
         />
       ))}
     </div>

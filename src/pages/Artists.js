@@ -1,23 +1,23 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { fetchArtists } from '../redux/songs/songsAction'
+import fetchArtist from "../redux/artists/artistssAction"
 
 const Artists = () => {
-  const params=useParams()
-  const dispatch=useDispatch()
-  const songsState=useSelector(state=>state.songsState)
-  // console.log(songsState)
-  useEffect(()=>{
-    dispatch(fetchArtists(params.slug))
-  },[])
+  const params = useParams();
+  const dispatch = useDispatch();
+  const artistsState = useSelector((state) => state.artistsState);
+  useEffect(() => {
+    dispatch(fetchArtist(params.slug));
+  }, []);
+  console.log(artistsState)
 
-  if (songsState && songsState.loading) return <h1>loading...</h1>;
-  if (songsState && songsState.error) return <h1>{songsState.error}</h1>;
+  if (artistsState && artistsState.loading) return <h1>loading...</h1>;
+  if (artistsState && artistsState.error) return <h1>{artistsState.error}</h1>;
   return (
     <div className='container xl'>
       {
-        Object.keys(songsState.songs).length>0 &&
+        // Object.keys(songsState.songs).length>0 &&
         <div>
           {/* <h1>{songsState.songs.title}</h1>
           <img style={{width:'200px',aspectRatio:'1'}} src={songsState.songs.cover_medium} alt={songsState.songs.title}/>

@@ -1,27 +1,30 @@
 const initialState={
   loading:false,
-  songs:{},
+  playlists:{},
   error:''
 }
 
-const songsReducer = (state = initialState, action) => {
+const playlistsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "FETCH_SONGS_REQUSET":
+    case "FETCH_PLAYLISTS_REQUSET":
       return {
         ...state,
+        playlists:{},
         loading: true,
+        error:''
       };
-    case "FETCH_SONGS_SUCCESS":
+    case "FETCH_PLAYLISTS_SUCCESS":
       return {
         ...state,
         loading: false,
-        songs:action.payload,
+        playlists:action.payload,
         error: "",
       };
-    case "FETCH_SONGS_FAILURE":
+    case "FETCH_PLAYLISTS_FAILURE":
       return {
         ...state,
         loading: false,
+        playlists:{},
         error: action.payload,
       };
 
@@ -30,4 +33,4 @@ const songsReducer = (state = initialState, action) => {
   }
 };
 
-export default songsReducer;
+export default playlistsReducer;

@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setTime } from "../../helper/functions";
-import { playPause, setPlaylist } from "../../redux/playlist/playlistAction";
+import { playPause, setSongs } from "../../redux/songslist/songsAction";
 
 const MusicHeader = ({
   tracks,
@@ -12,9 +12,10 @@ const MusicHeader = ({
   quantity,
   duration,
   id,
+  category
 }) => {
   const dispatch = useDispatch();
-  const playlistState = useSelector((state) => state.playlistState);
+  const songsState = useSelector((state) => state.songsState);
   return (
     <div className="music-header">
       <div className="music-thumb">
@@ -27,15 +28,15 @@ const MusicHeader = ({
         <p className="music-duration">
           {quantity} {quantity > 1 ? "songs" : "song"} . {setTime(duration)}
         </p>
-        {playlistState.playlistId.toString() !== id.toString() ? (
+        {songsState.playlistId.toString() !== id.toString() ? (
           <button
-            onClick={() => dispatch(setPlaylist({ tracks, id, index: 0 }))}
+            onClick={() => dispatch(setSongs({ tracks, id, index: 0,category }))}
             className="music-play-btn music-btn"
           >
             <span className="material-icons">play_arrow</span>
             <p>play</p>
           </button>
-        ) : playlistState.isPlaying ? (
+        ) : songsState.isPlaying ? (
           <button
             onClick={() => dispatch(playPause(false))}
             className="music-pause-btn music-btn"

@@ -4,38 +4,38 @@ import { useParams } from "react-router-dom";
 import MusicBody from "../components/playPage/MusicBody";
 import MusicHeader from "../components/playPage/MusicHeader";
 import { calcDuration } from "../helper/functions";
-import { fetchAlbum } from "../redux/songs/songsAction";
+import fetchAlbum from "../redux/albums/albumsAction";
 
 const Albums = () => {
   const params = useParams();
   const dispatch = useDispatch();
-  const songsState = useSelector((state) => state.songsState);
-  // console.log(songsState);
+  const albumsState = useSelector((state) => state.albumsState);
   useEffect(() => {
     dispatch(fetchAlbum(params.slug));
   }, []);
 
-  if (songsState && songsState.loading) return <h1>loading...</h1>;
-  if (songsState && songsState.error) return <h1>{songsState.error}</h1>;
+  if (albumsState && albumsState.loading) return <h1>loading...</h1>;
+  if (albumsState && albumsState.error) return <h1>{albumsState.error}</h1>;
   return (
     <div className="container xl">
-      {Object.keys(songsState.songs).length > 0 && (
+      {Object.keys(albumsState.albums).length > 0 && (
         <div
           className="music-wraper"
-          style={{ backgroundImage: `url('${songsState.songs.cover_big}')` }}
+          style={{ backgroundImage: `url('${albumsState.albums.cover_big}')` }}
         >
           <div className="music-box">
             <MusicHeader
-              tracks={songsState.songs.tracks.data}
-              title={songsState.songs.title}
-              thumbnail={songsState.songs.cover_medium}
-              artist={songsState.songs.artist.name}
-              type={songsState.songs.type}
-              quantity={songsState.songs.tracks.data.length}
-              duration={calcDuration(songsState.songs.tracks.data)}
-              id={songsState.songs.id}
+              tracks={albumsState.albums.tracks.data}
+              title={albumsState.albums.title}
+              thumbnail={albumsState.albums.cover_medium}
+              artist={albumsState.albums.artist.name}
+              type={albumsState.albums.type}
+              quantity={albumsState.albums.tracks.data.length}
+              duration={calcDuration(albumsState.albums.tracks.data)}
+              id={albumsState.albums.id}
+              category='albums'
             />
-            <MusicBody tracks={songsState.songs.tracks.data}/>
+            <MusicBody tracks={albumsState.albums.tracks.data} category='albums'/>
           </div>
         </div>
       )}
