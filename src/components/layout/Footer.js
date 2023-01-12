@@ -33,18 +33,12 @@ const Footer = () => {
     if (repeatAll) {
       if (shuffled) {
         dispatch(autoEnded(calcShuffleNumber(songsState.playlist.length)));
-      } else if (
-        songsState.currentSong + 1 >
-        songsState.playlist.length - 1
-      ) {
+      } else if (songsState.currentSong + 1 > songsState.playlist.length - 1) {
         dispatch(autoEnded(0));
       } else {
         dispatch(autoEnded(songsState.currentSong + 1));
       }
-    } else if (
-      songsState.currentSong + 1 <=
-      songsState.playlist.length - 1
-    ) {
+    } else if (songsState.currentSong + 1 <= songsState.playlist.length - 1) {
       if (shuffled) {
         dispatch(autoEnded(calcShuffleNumber(songsState.playlist.length)));
       } else {
@@ -104,126 +98,131 @@ const Footer = () => {
   return (
     songsState.isActive && (
       <div className="footer">
-        <audio
-          className="footer-audio"
-          ref={audioRef}
-          src={songsState.playlist[songsState.currentSong].preview}
-          controls
-          autoPlay={songsState.isPlaying}
-          onEnded={handleEnd}
-          muted={muted}
-          onTimeUpdate={handleTimeUpdate}
-          volume="1"
-        >
-          it's not available
-        </audio>
-        <input
-          className="footer-range"
-          type="range"
-          min="0"
-          max={maxTime}
-          step="1"
-          value={currentTime}
-          onChange={handleRange}
-        />
-        {Object.keys(songsState.playlist).length > 0 && (
-          <Link to={`/${songsState.category}/${songsState.playlistId}`} className="footer-song-details">
-            <div className="footer-thumb-box">
-              <img
-                src={
-                  songsState.playlist[songsState.currentSong].album
-                    .cover_small
-                }
-                alt={songsState.playlist[songsState.currentSong].title}
-              />
-            </div>
-            <div className="footer-card-details">
-              <p className="footer-card-title">
-                {songsState.playlist[songsState.currentSong].title}
-              </p>
-              <p className="footer-card-artist">
-                {songsState.playlist[songsState.currentSong].artist.name}
-              </p>
-            </div>
-          </Link>
-        )}
-        <div className="footer-btns">
-          <button
-            className={`material-icons ${repeatOne && "active"}`}
-            title="Repeat This Song"
-            onClick={() => setRepeatOne(!repeatOne)}
+        <div className="footer-container">
+          <audio
+            className="footer-audio"
+            ref={audioRef}
+            src={songsState.playlist[songsState.currentSong].preview}
+            controls
+            autoPlay={songsState.isPlaying}
+            onEnded={handleEnd}
+            muted={muted}
+            onTimeUpdate={handleTimeUpdate}
+            volume="1"
           >
-            repeat_one
-          </button>
-          <button
-            className={`material-icons ${repeatAll && "active"}`}
-            title="Repeat All"
-            onClick={() => setRepeatAll(!repeatAll)}
-          >
-            repeat
-          </button>
-          <button
-            className="material-icons footer-pre-next"
-            title="Previous"
-            onClick={handlePrevious}
-          >
-            skip_previous
-          </button>
-          {songsState.isPlaying ? (
-            <button
-              onClick={() => dispatch(playPause(false))}
-              className="footer-playPause material-icons"
-              title="Stop"
+            it's not available
+          </audio>
+          <input
+            className="footer-range"
+            type="range"
+            min="0"
+            max={maxTime.toString()}
+            step="1"
+            value={currentTime}
+            onChange={handleRange}
+          />
+          {Object.keys(songsState.playlist).length > 0 && (
+            <Link
+              to={`/${songsState.category}/${songsState.playlistId}`}
+              className="footer-song-details"
             >
-              pause
-            </button>
-          ) : (
-            <button
-              onClick={() => dispatch(playPause(true))}
-              className="footer-playPause material-icons"
-              title="Play"
-            >
-              play_arrow
-            </button>
+              <div className="footer-thumb-box">
+                <img
+                  src={
+                    songsState.playlist[songsState.currentSong].album
+                      .cover_small
+                  }
+                  alt={songsState.playlist[songsState.currentSong].title}
+                />
+              </div>
+              <div className="footer-card-details">
+                <p className="footer-card-title">
+                  {songsState.playlist[songsState.currentSong].title}
+                </p>
+                <p className="footer-card-artist">
+                  {songsState.playlist[songsState.currentSong].artist.name}
+                </p>
+              </div>
+            </Link>
           )}
-          <button
-            className="material-icons footer-pre-next"
-            title="Next"
-            onClick={handleNext}
-          >
-            skip_next
-          </button>
-          <button
-            className={`material-icons ${shuffled && "active"}`}
-            title={shuffled ? "Shuffle Off" : "Shuffle On"}
-            onClick={() => setShuffled(!shuffled)}
-          >
-            shuffle
-          </button>
-          {muted ? (
+          <div className="footer-btns">
             <button
-              className="material-icons"
-              onClick={() => setMuted(false)}
-              title="Mute Off"
+              className={`material-icons ${repeatOne && "active"}`}
+              title="Repeat This Song"
+              onClick={() => setRepeatOne(!repeatOne)}
             >
-              volume_off
+              repeat_one
             </button>
-          ) : (
             <button
-              className="material-icons"
-              onClick={() => setMuted(true)}
-              title="Mute On"
+              className={`material-icons ${repeatAll && "active"}`}
+              title="Repeat All"
+              onClick={() => setRepeatAll(!repeatAll)}
             >
-              volume_up
+              repeat
             </button>
-          )}
+            <button
+              className="material-icons footer-pre-next"
+              title="Previous"
+              onClick={handlePrevious}
+            >
+              skip_previous
+            </button>
+            {songsState.isPlaying ? (
+              <button
+                onClick={() => dispatch(playPause(false))}
+                className="footer-playPause material-icons"
+                title="Stop"
+              >
+                pause
+              </button>
+            ) : (
+              <button
+                onClick={() => dispatch(playPause(true))}
+                className="footer-playPause material-icons"
+                title="Play"
+              >
+                play_arrow
+              </button>
+            )}
+            <button
+              className="material-icons footer-pre-next"
+              title="Next"
+              onClick={handleNext}
+            >
+              skip_next
+            </button>
+            <button
+              className={`material-icons ${shuffled && "active"}`}
+              title={shuffled ? "Shuffle Off" : "Shuffle On"}
+              onClick={() => setShuffled(!shuffled)}
+            >
+              shuffle
+            </button>
+            {muted ? (
+              <button
+                className="material-icons"
+                onClick={() => setMuted(false)}
+                title="Mute Off"
+              >
+                volume_off
+              </button>
+            ) : (
+              <button
+                className="material-icons"
+                onClick={() => setMuted(true)}
+                title="Mute On"
+              >
+                volume_up
+              </button>
+            )}
+          </div>
+          <button
+            className="close material-icons"
+            onClick={() => dispatch(clearSongs())}
+          >
+            close
+          </button>
         </div>
-        <button
-          className="close material-icons"
-          onClick={() => dispatch(clearSongs())}
-        >
-          close
-        </button>
       </div>
     )
   );

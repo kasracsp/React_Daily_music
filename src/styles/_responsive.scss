@@ -17,17 +17,19 @@
   }
 
   .footer {
-    .footer-btns {
-      gap: 1rem;
-      .material-icons {
-        font-size: 1.5rem;
-      }
-      .footer-playPause {
-        font-size: 3rem;
-      }
-      .footer-pre-next {
-        padding: 0.5rem;
-        font-size: 2rem;
+    .footer-container {
+      .footer-btns {
+        gap: 1rem;
+        .material-icons {
+          font-size: 1.5rem;
+        }
+        .footer-playPause {
+          font-size: 3rem;
+        }
+        .footer-pre-next {
+          padding: 0.5rem;
+          font-size: 2rem;
+        }
       }
     }
   }
@@ -106,24 +108,26 @@
     }
   }
   .footer {
-    .footer-song-details {
-      position: absolute;
-      left: 1rem;
-      top: 50%;
-      transform: translate(0, -50%);
+    .footer-container {
+      .footer-song-details {
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translate(0, -50%);
 
-      .footer-card-details {
-        max-width: 20vw;
+        .footer-card-details {
+          max-width: 20vw;
 
-        .footer-card-artist {
-          display: flex;
+          .footer-card-artist {
+            display: flex;
+          }
         }
       }
-    }
 
-    .close {
-      top: 50%;
-      transform: translate(0, -50%);
+      .close {
+        top: 50%;
+        transform: translate(0, -50%);
+      }
     }
   }
   .music-wraper {
@@ -164,15 +168,17 @@
   }
 
   .footer {
-    .footer-song-details {
-      display: flex;
-      
-      .footer-card-details {
-        max-width: 26vw;
-      }
-
-      .footer-thumb-box {
+    .footer-container {
+      .footer-song-details {
         display: flex;
+
+        .footer-card-details {
+          max-width: 26vw;
+        }
+
+        .footer-thumb-box {
+          display: flex;
+        }
       }
     }
   }

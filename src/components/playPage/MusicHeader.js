@@ -12,7 +12,8 @@ const MusicHeader = ({
   quantity,
   duration,
   id,
-  category
+  link,
+  category,
 }) => {
   const dispatch = useDispatch();
   const songsState = useSelector((state) => state.songsState);
@@ -25,33 +26,43 @@ const MusicHeader = ({
         <p className="music-type">{type}</p>
         <h1 className="music-title">{title}</h1>
         <h4 className="music-artist">{artist}</h4>
-        <p className="music-duration">
-          {quantity} {quantity > 1 ? "songs" : "song"} . {setTime(duration)}
-        </p>
-        {songsState.playlistId.toString() !== id.toString() ? (
-          <button
-            onClick={() => dispatch(setSongs({ tracks, id, index: 0,category }))}
-            className="music-play-btn music-btn"
-          >
-            <span className="material-icons">play_arrow</span>
-            <p>play</p>
-          </button>
-        ) : songsState.isPlaying ? (
-          <button
-            onClick={() => dispatch(playPause(false))}
-            className="music-pause-btn music-btn"
-          >
-            <span className="material-icons">pause</span>
-            <p>pause</p>
-          </button>
+        {category !== "podcasts" && (
+          <p className="music-duration">
+            {quantity} {quantity > 1 ? "songs" : "song"} . {setTime(duration)}
+          </p>
+        )}
+        {category !== "podcasts" ? (
+          songsState.playlistId.toString() !== id.toString() ? (
+            <button
+              onClick={() =>
+                dispatch(setSongs({ tracks, id, index: 0, category }))
+              }
+              className="music-play-btn music-btn"
+            >
+              <span className="material-icons">play_arrow</span>
+              <p>play</p>
+            </button>
+          ) : songsState.isPlaying ? (
+            <button
+              onClick={() => dispatch(playPause(false))}
+              className="music-pause-btn music-btn"
+            >
+              <span className="material-icons">pause</span>
+              <p>pause</p>
+            </button>
+          ) : (
+            <button
+              onClick={() => dispatch(playPause(true))}
+              className="music-play-btn music-btn"
+            >
+              <span className="material-icons">play_arrow</span>
+              <p>play</p>
+            </button>
+          )
         ) : (
-          <button
-            onClick={() => dispatch(playPause(true))}
-            className="music-play-btn music-btn"
-          >
-            <span className="material-icons">play_arrow</span>
-            <p>play</p>
-          </button>
+          <a href={link} target="_blank" className="music-link">
+            if you want to listen to the podcast click
+          </a>
         )}
       </div>
     </div>

@@ -12,7 +12,7 @@ const Albums = () => {
   const albumsState = useSelector((state) => state.albumsState);
   useEffect(() => {
     dispatch(fetchAlbum(params.slug));
-  }, []);
+  }, [params.slug]);
 
   if (albumsState && albumsState.loading) return <h1>loading...</h1>;
   if (albumsState && albumsState.error) return <h1>{albumsState.error}</h1>;

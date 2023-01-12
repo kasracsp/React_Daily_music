@@ -28,8 +28,12 @@
 
     .music-title{
       font-family: "Montserrat",serif;
+      text-transform: capitalize;
     }
-
+    .music-artist{
+      text-transform: capitalize;
+    }
+    
     .music-duration{
       text-transform: uppercase;
       color: var(--shadow-color);
@@ -59,6 +63,20 @@
       
       &:active{
         background-color: var(--active-color);
+      }
+    }
+
+    .music-link{
+      margin-bottom: 8rem;
+      text-decoration: underline;
+      color: var(--hover-color);
+      
+      &:hover{
+        text-decoration: none;
+      }
+
+      &::first-letter{
+        text-transform: uppercase;
       }
     }
   }

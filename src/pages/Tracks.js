@@ -1,7 +1,10 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
-import fetchTrack from '../redux/tracks/tracksAction'
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import fetchTrack from "../redux/tracks/tracksAction";
+import MusicBody from "../components/playPage/MusicBody";
+import MusicHeader from "../components/playPage/MusicHeader";
+import { calcDuration } from "../helper/functions";
 
 const Tracks = () => {
   const params = useParams();
@@ -9,23 +12,63 @@ const Tracks = () => {
   const tracksState = useSelector((state) => state.tracksState);
   useEffect(() => {
     dispatch(fetchTrack(params.slug));
-  }, []);
-  console.log(tracksState)
+  }, [params.slug]);
+  console.log(tracksState);
 
   if (tracksState && tracksState.loading) return <h1>loading...</h1>;
   if (tracksState && tracksState.error) return <h1>{tracksState.error}</h1>;
   return (
-    <div className='container xl'>
-      {
-        // Object.keys(songsState.songs).length>0 &&
-        // <div>
-        //   <h1>{songsState.songs.title}</h1>
-        //   <img style={{width:'200px',aspectRatio:'1'}} src={songsState.songs.album.cover_medium} alt={songsState.songs.title}/>
-        //   <audio controls src={songsState.songs.preview}/>
-        // </div>
-      }
+    <div className="container xl">
+      {Object.keys(tracksState.tracks).length > 0 && (
+        <div
+          className="music-wraper"
+          style={{
+            backgroundImage: `url('${tracksState.tracks.album.cover_big}')`,
+          }}
+        >
+          <div className="music-box">
+            <MusicHeader
+              tracks={[
+                {
+                  title: `${tracksState.tracks.title}`,
+                  duration: `${tracksState.tracks.duration}`,
+                  preview: `${tracksState.tracks.preview}`,
+                  id: `${params.slug}`,
+                  album: {
+                    cover_small: `${tracksState.tracks.album.cover_small}`,
+                  },
+                  artist: { name: `${tracksState.tracks.artist.name}` },
+                },
+              ]}
+              title={tracksState.tracks.title}
+              thumbnail={tracksState.tracks.album.cover_big}
+              artist={tracksState.tracks.artist.name}
+              type={tracksState.tracks.type}
+              quantity={1}
+              duration={tracksState.tracks.duration}
+              id={params.slug}
+              category="tracks"
+            />
+            <MusicBody
+              tracks={[
+                {
+                  title: `${tracksState.tracks.title}`,
+                  duration: `${tracksState.tracks.duration}`,
+                  preview: `${tracksState.tracks.preview}`,
+                  id: `${params.slug}`,
+                  album: {
+                    cover_small: `${tracksState.tracks.album.cover_small}`,
+                  },
+                  artist: { name: `${tracksState.tracks.artist.name}` },
+                },
+              ]}
+              category="tracks"
+            />
+          </div>
+        </div>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default Tracks
+export default Tracks;

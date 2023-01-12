@@ -22,7 +22,7 @@ const fetchArtist = (slug) => {
   return (dispatch) => {
     dispatch(fetchArtistsRequest());
     axios
-      .get(`https://api.deezer.com/artist/${slug}/top?limit=20`)
+      .get(`https://api.deezer.com/artist/${slug}/top?limit=50`)
       .then((response) => dispatch(fetchArtistsSuccess(response.data)))
       .catch((error) => dispatch(fetchArtistsFailure(error.message)));
   };
