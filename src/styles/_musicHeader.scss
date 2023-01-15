@@ -2,7 +2,7 @@
   @include myDisplay(column, center, center);
   width: 100%;
   gap: 2rem;
-  padding:4rem 2rem 2rem;
+  padding: 4rem 2rem 2rem;
 
   .music-thumb {
     width: 100%;
@@ -20,63 +20,72 @@
     text-align: center;
     gap: 1rem;
 
-    .music-type{
+    .music-type {
       color: var(--hover-color);
       text-transform: capitalize;
-      font-family: "Oswald",serif;
+      font-family: "Oswald", serif;
     }
 
-    .music-title{
-      font-family: "Montserrat",serif;
+    .music-title {
+      font-family: "Montserrat", serif;
       text-transform: capitalize;
     }
-    .music-artist{
+    .music-artist {
       text-transform: capitalize;
     }
-    
-    .music-duration{
+
+    .music-duration {
       text-transform: uppercase;
       color: var(--shadow-color);
-      font-family: "Oswald",serif;
+      font-family: "Oswald", serif;
       font-size: 0.8rem;
     }
 
-    .music-btn{
-      @include myDisplay(row,center,center);
+    .music-btn {
+      @include myDisplay(row, center, center);
       background-color: var(--hover-color);
-      padding:0.5rem 1rem 0.5rem 0.6rem;
+      padding: 0.5rem 1rem 0.5rem 0.6rem;
       border-radius: 62.5rem;
       gap: 0.3rem;
-      
-      span{
+
+      span {
         padding: 0;
         font-size: 1.5rem;
       }
 
-      p{
+      p {
         text-transform: capitalize;
       }
-      
-      &:hover{
+
+      &:hover {
         transform: scale(1.05);
       }
-      
-      &:active{
+
+      &:active {
         background-color: var(--active-color);
       }
     }
 
-    .music-link{
+    .music-link {
       margin-bottom: 8rem;
       text-decoration: underline;
       color: var(--hover-color);
-      
-      &:hover{
+
+      &:hover {
         text-decoration: none;
       }
 
-      &::first-letter{
+      &::first-letter {
         text-transform: uppercase;
+      }
+    }
+
+    .music-album {
+      text-transform: capitalize;
+      color: var(--hover-color);
+      
+      &:hover {
+        color: var(--active-color);
       }
     }
   }

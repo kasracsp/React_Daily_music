@@ -21,14 +21,14 @@ const Artists = () => {
       {Object.keys(artistsState.artists).length > 0 && (
         <div
           className="music-wraper"
-          style={{ backgroundImage: `url('${artistsState.artists.data[0].contributors[0].picture_big}')` }}
+          style={{ backgroundImage: `url('${artistsState.artists.data[artistsState.artists.data.length-1].contributors[0].picture_big}')` }}
         >
           <div className="music-box">
             <MusicHeader
               tracks={artistsState.artists.data}
               title='the best of'
-              thumbnail={artistsState.artists.data[0].contributors[0].picture_big}
-              artist={artistsState.artists.data[0].contributors[0].name}
+              thumbnail={artistsState.artists.data[artistsState.artists.data.length-1].contributors[0].picture_big}
+              artist={artistsState.artists.data[artistsState.artists.data.length-1].contributors[0].name}
               type={artistsState.artists.data[0].contributors[0].type}
               quantity={artistsState.artists.data.length}
               duration={calcDuration(artistsState.artists.data)}

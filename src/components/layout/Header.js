@@ -1,7 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
+import {
+  fetchSearchList,
+  clearSearchList,
+} from "../../redux/searchList/searchListAction";
 
 const Header = () => {
+  const dispatch = useDispatch();
   const location = useLocation();
   const searchRef = useRef();
   const [search, setSearch] = useState("");
@@ -20,9 +26,22 @@ const Header = () => {
       document.removeEventListener("mousedown", handler);
     };
   });
-  // console.log(search);
-  // console.log(typing);
-  // console.log(location.pathname);
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+    if (
+      event.target.value.trim() === "" ||
+      event.target.value.trim() === null
+    ) {
+      dispatch(clearSearchList());
+    } else {
+      dispatch(fetchSearchList(event.target.value));
+    }
+  };
+  const handleClear = () => {
+    setSearch("");
+    dispatch(clearSearchList());
+  };
+
   return (
     <div className="header">
       <div className="container xl">
@@ -113,10 +132,15 @@ const Header = () => {
                   type="text"
                   placeholder="Search"
                   value={search}
-                  onChange={(e) => setSearch(e.target.value)}
+                  onChange={handleSearch}
                 />
-                {typing && search.length>0 && (
-                  <button onClick={()=>setSearch("")} className="material-icons erase-btn">cancel</button>
+                {typing && search.length > 0 && (
+                  <button
+                    onClick={handleClear}
+                    className="material-icons erase-btn"
+                  >
+                    cancel
+                  </button>
                 )}
                 <span className="material-icons search-btn">search</span>
               </Link>

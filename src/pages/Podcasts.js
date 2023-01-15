@@ -11,7 +11,6 @@ const Podcasts = () => {
   useEffect(() => {
     dispatch(fetchPodcast(params.slug));
   }, []);
-  console.log(podcastsState)
 
   if (podcastsState && podcastsState.loading) return <h1>loading...</h1>;
   if (podcastsState && podcastsState.error) return <h1>{podcastsState.error}</h1>;

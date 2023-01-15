@@ -3,7 +3,6 @@ import { setSongTime } from "../../helper/functions";
 import MusicCard from "./MusicCard";
 
 const MusicBody = ({ tracks,category }) => {
-  // console.log(tracks);
   return (
     <div className="music-body">
       {tracks.map((track, index) => (

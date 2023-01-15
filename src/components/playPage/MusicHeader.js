@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { setTime } from "../../helper/functions";
 import { playPause, setSongs } from "../../redux/songslist/songsAction";
 
@@ -14,6 +15,7 @@ const MusicHeader = ({
   id,
   link,
   category,
+  albumId
 }) => {
   const dispatch = useDispatch();
   const songsState = useSelector((state) => state.songsState);
@@ -25,6 +27,9 @@ const MusicHeader = ({
       <div className="music-details">
         <p className="music-type">{type}</p>
         <h1 className="music-title">{title}</h1>
+        {category === "tracks" && (
+          <Link className="music-album" to={`/albums/${albumId}`}>listen to album</Link>
+        )}
         <h4 className="music-artist">{artist}</h4>
         {category !== "podcasts" && (
           <p className="music-duration">

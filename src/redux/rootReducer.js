@@ -6,6 +6,7 @@ import playlistsReducer from "./playlists/playlistsReducer";
 import podcastsReducer from "./podcasts/podcastsReducer";
 import tracksReducer from "./tracks/tracksReducer";
 import songsReducer from "./songslist/songstReducer";
+import searchListReducer from "./searchList/searchListReducer"
 
 const rootReducer=combineReducers({
   chartState:chartReducer,
@@ -15,6 +16,7 @@ const rootReducer=combineReducers({
   podcastsState:podcastsReducer,
   tracksState:tracksReducer,
   songsState:songsReducer,
+  searchListState:searchListReducer,
 })
 
 export default rootReducer

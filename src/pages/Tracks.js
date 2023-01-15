@@ -13,7 +13,6 @@ const Tracks = () => {
   useEffect(() => {
     dispatch(fetchTrack(params.slug));
   }, [params.slug]);
-  console.log(tracksState);
 
   if (tracksState && tracksState.loading) return <h1>loading...</h1>;
   if (tracksState && tracksState.error) return <h1>{tracksState.error}</h1>;
@@ -48,6 +47,7 @@ const Tracks = () => {
               duration={tracksState.tracks.duration}
               id={params.slug}
               category="tracks"
+              albumId={tracksState.tracks.album.id}
             />
             <MusicBody
               tracks={[

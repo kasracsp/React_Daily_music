@@ -1,10 +1,44 @@
-import React from 'react'
+import React from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Search = () => {
-  // console.log('searching...')
-  return (
-    <div></div>
-  )
-}
+  const searchListState = useSelector((state) => state.searchListState);
 
-export default Search
+  if (searchListState && searchListState.loading) return <h1>loading...</h1>;
+  if (searchListState && searchListState.error)
+    return <h1>{searchListState.error}</h1>;
+  return (
+    <div className="container xl">
+      {searchListState.searchList.length > 0 ? (
+        <div className="search-wrapper">
+          <h2 className="search-subject">Suggestions</h2>
+          <div className="search-container">
+            {searchListState.searchList.map((item) => (
+              <Link
+                to={`/tracks/${item.id}`}
+                key={item.id}
+                className="search-link"
+              >
+                {item.title} by {item.artist.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div className="search-wrapper">
+          <h2 className="search-subject">Listen Your Way</h2>
+          <div className="search-category">
+            <Link to="/chart/albums" className="search-category-link">albums</Link>
+            <Link to="/chart/artists" className="search-category-link">artists</Link>
+            <Link to="/chart/playlists" className="search-category-link">playlists</Link>
+            <Link to="/chart/podcasts" className="search-category-link">podcasts</Link>
+            <Link to="/chart/tracks" className="search-category-link">tracks</Link>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Search;

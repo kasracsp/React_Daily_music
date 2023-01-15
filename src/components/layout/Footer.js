@@ -81,19 +81,9 @@ const Footer = () => {
     }
   }, [songsState]);
 
-  useEffect(() => {
-    if (
-      songsState.isPlaying &&
-      songsState.isPlaying &&
-      audioRef.current &&
-      audioRef.current.duration != null &&
-      audioRef.current.duration != NaN
-    ) {
-      setTimeout(() => {
-        setMaxTime(Number(Math.ceil(audioRef.current.duration)));
-      }, 2000);
-    }
-  }, [songsState]);
+  const handleLoad = () => {
+    setMaxTime(Number(Math.ceil(audioRef.current.duration)));
+  };
 
   return (
     songsState.isActive && (
@@ -104,6 +94,7 @@ const Footer = () => {
             ref={audioRef}
             src={songsState.playlist[songsState.currentSong].preview}
             controls
+            onLoadedData={handleLoad}
             autoPlay={songsState.isPlaying}
             onEnded={handleEnd}
             muted={muted}

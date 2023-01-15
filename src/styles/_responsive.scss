@@ -33,6 +33,12 @@
       }
     }
   }
+
+  .search-wrapper {
+    .search-category {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
 }
 @include sm-screen {
   .header {
@@ -180,6 +186,12 @@
           display: flex;
         }
       }
+    }
+  }
+
+  .search-wrapper {
+    .search-category {
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 }
