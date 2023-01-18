@@ -15,14 +15,12 @@ body {
   --more-dark-color: rgba(0, 0, 0, 0.85);
   --grey-color: #444;
   --bright-color: #fff;
-  --fading-color:rgba(255, 255, 255, 0.1);
+  --fading-color: rgba(255, 255, 255, 0.1);
   --less-bright-color: rgba(255, 255, 255, 0.2);
   --more-bright-color: rgba(255, 255, 255, 0.4);
   --shadow-color: #bebebe;
   --hover-color: #00abff;
-  --active-color: #0085b0;
-  --halloween-color: #f56f16;
-  --sun-color: #fe9600;
+  --active-color: #0077b2;
   width: 100%;
   min-height: 100vh;
   background: var(--dark-color);
@@ -32,28 +30,58 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  &.day {
-    --dark-color: #fff;
-    --grey-color: #444;
-    --less-dark-color: rgba(255, 255, 255, 0.7);
-    --more-dark-color: rgba(255, 255, 255, 0.9);
-    --bright-color: #000;
-    --less-bright-color: rgba(0, 0, 0, 0.2);
-    --shadow-color: #bebebe;
-    --hover-color: #00abff;
-    --active-color: #0085b0;
-  }
 }
-.container{
+.container {
   margin: 0 auto;
-  &.lg{
+  &.lg {
     max-width: 1200px;
   }
-  &.xl{
+  &.xl {
     max-width: 1400px;
   }
 }
+
+.loading {
+  width: 100%;
+  height: calc(100vh - 5rem);
+  @include myDisplay(row, center, center);
+  user-select: none;
+
+  img {
+    width: 5rem;
+    height: 5rem;
+  }
+}
+.loading {
+  width: 100%;
+  height: calc(100vh - 5rem);
+  @include myDisplay(row, center, center);
+  user-select: none;
+  img {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .error {
+    @include myDisplay(column, center, center);
+    gap: 0.5rem;
+    text-transform: capitalize;
+    color: #ffffff88;
+    img {
+      width: 10rem;
+      height: 10rem;
+    }
+
+    h5 {
+      text-transform: lowercase;
+
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
 a {
   color: var(--bright-color);
   text-decoration: none;
@@ -77,4 +105,3 @@ button {
   border: 1px solid transparent;
   cursor: pointer;
 }
-

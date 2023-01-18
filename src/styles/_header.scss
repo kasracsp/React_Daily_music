@@ -71,7 +71,8 @@
           display: none;
           position: absolute;
           backdrop-filter: blur(40px);
-          background-color:var(--more-dark-color);
+          -webkit-backdrop-filter: blur(40px);
+          background-color:var(--less-dark-color);
           right: 0;
           top: 3rem;
           border: 1px solid var(--less-bright-color);
@@ -113,32 +114,6 @@
       @include myDisplay(row, flex-end, center);
       padding-right: 1rem;
 
-      // need media
-      .signin {
-        @include myDisplay(row, center, center);
-
-        &:hover .nav-text {
-          background-color: var(--hover-color);
-        }
-        &:hover .material-icons {
-          color: var(--hover-color);
-        }
-
-        .material-icons {
-          color: var(--active-color);
-        }
-
-        .nav-text {
-          transition: 0.2s;
-          font-family: "Oswald", serif;
-          font-weight: 500;
-          display: none;
-          text-transform: capitalize;
-          background-color: var(--active-color);
-          padding: 0.2rem 1rem;
-          border-radius: 62.5rem;
-        }
-      }
       .search-container {
         @include myDisplay(row, center, center);
         position: relative;

@@ -1,11 +1,13 @@
 import React from "react";
 import Carrousel from "../components/home/Carrousel";
 import { useSelector } from "react-redux";
+import Loading from "../shared/Loading";
+import Error from "../shared/Error";
 
 const Home = () => {
   const chartState = useSelector((state) => state.chartState);
-  if (chartState && chartState.loading) return <h1>loading...</h1>;
-  if (chartState && chartState.error) return <h1>{chartState.error}</h1>;
+  if (chartState && chartState.loading) return <Loading />;
+  if (chartState && chartState.error) return <Error />;
 
   return (
     <div className="container xl">

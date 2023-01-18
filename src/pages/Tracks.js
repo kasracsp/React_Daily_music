@@ -4,7 +4,8 @@ import { useParams } from "react-router-dom";
 import fetchTrack from "../redux/tracks/tracksAction";
 import MusicBody from "../components/playPage/MusicBody";
 import MusicHeader from "../components/playPage/MusicHeader";
-import { calcDuration } from "../helper/functions";
+import Error from "../shared/Error";
+import Loading from "../shared/Loading";
 
 const Tracks = () => {
   const params = useParams();
@@ -14,8 +15,8 @@ const Tracks = () => {
     dispatch(fetchTrack(params.slug));
   }, [params.slug]);
 
-  if (tracksState && tracksState.loading) return <h1>loading...</h1>;
-  if (tracksState && tracksState.error) return <h1>{tracksState.error}</h1>;
+  if (tracksState && tracksState.loading) return <Loading />;
+  if (tracksState && tracksState.error) return <Error />;
   return (
     <div className="container xl">
       {Object.keys(tracksState.tracks).length > 0 && (

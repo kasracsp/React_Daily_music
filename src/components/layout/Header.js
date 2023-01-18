@@ -153,11 +153,6 @@ const Header = () => {
                 </button>
               )}
             </div>
-
-            <Link to="/signin" className="signin">
-              <span className="material-icons">account_circle</span>
-              <p className="nav-text">sign in</p>
-            </Link>
           </div>
         </div>
       </div>

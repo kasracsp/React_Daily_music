@@ -5,6 +5,8 @@ import MusicBody from "../components/playPage/MusicBody";
 import MusicHeader from "../components/playPage/MusicHeader";
 import { calcDuration } from "../helper/functions";
 import fetchAlbum from "../redux/albums/albumsAction";
+import Error from "../shared/Error";
+import Loading from "../shared/Loading";
 
 const Albums = () => {
   const params = useParams();
@@ -14,8 +16,8 @@ const Albums = () => {
     dispatch(fetchAlbum(params.slug));
   }, [params.slug]);
 
-  if (albumsState && albumsState.loading) return <h1>loading...</h1>;
-  if (albumsState && albumsState.error) return <h1>{albumsState.error}</h1>;
+  if (albumsState && albumsState.loading) return <Loading/> ;
+  if (albumsState && albumsState.error) return <Error/>;
   return (
     <div className="container xl">
       {Object.keys(albumsState.albums).length > 0 && (
