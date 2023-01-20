@@ -29,9 +29,7 @@
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @include myDisplay(row,center,center);
       visibility: hidden;
       z-index: 3;
       color: var(--bright-color);

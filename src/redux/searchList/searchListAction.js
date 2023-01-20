@@ -27,7 +27,7 @@ const fetchSearchList = (id) => {
   return (dispatch) => {
     dispatch(fetchSearchListRequest());
     axios
-      .get(`https://api.deezer.com/search?q=${id}`)
+      .get(`search?q=${id}`)
       .then((response) => dispatch(fetchSearchListSuccess(response.data.data)))
       .catch((error) => dispatch(fetchSearchListFailure(error.message)));
   };

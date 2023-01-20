@@ -22,7 +22,7 @@ const fetchPlaylist = (slug) => {
   return (dispatch) => {
     dispatch(fetchPlaylistsRequest());
     axios
-      .get(`https://api.deezer.com/playlist/${slug}`)
+      .get(`playlist/${slug}`)
       .then((response) => dispatch(fetchPlaylistsSuccess(response.data)))
       .catch((error) => dispatch(fetchPlaylistsFailure(error.message)));
   };

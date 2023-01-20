@@ -58,15 +58,6 @@ const Header = () => {
               <span className="material-icons">home</span>
               <p className="nav-text">home</p>
             </Link>
-            <Link
-              to="chart/podcasts"
-              className={`nav-item ${
-                location.pathname === "/chart/podcasts" && "active"
-              }`}
-            >
-              <span className="material-icons">podcasts</span>
-              <p className="nav-text">podcasts</p>
-            </Link>
             <div className="library">
               <div className="nav-item">
                 <div className="start-btn material-icons">headphones</div>
@@ -82,16 +73,6 @@ const Header = () => {
                     }`}
                   >
                     albums
-                  </Link>
-                </li>
-                <li className="library-item">
-                  <Link
-                    to="chart/artists"
-                    className={`library-link ${
-                      location.pathname === "/chart/artists" && "active"
-                    }`}
-                  >
-                    artists
                   </Link>
                 </li>
                 <li className="library-item">

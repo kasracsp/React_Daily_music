@@ -22,7 +22,7 @@ const fetchAlbum = (slug) => {
   return (dispatch) => {
     dispatch(fetchAlbumsRequest());
     axios
-      .get(`https://api.deezer.com/album/${slug}`)
+      .get(`album/${slug}`)
       .then((response) => dispatch(fetchAlbumsSuccess(response.data)))
       .catch((error) => dispatch(fetchAlbumsFailure(error.message)));
   };

@@ -13,10 +13,8 @@
       width: 100%;
       top: 0;
       left: 0;
-      display: flex;
+      @include myDisplay(row,flex-start,center);
       gap: 1rem;
-      justify-content: flex-start;
-      align-items: center;
       padding-left: 1rem;
       padding-right: 1rem;
 

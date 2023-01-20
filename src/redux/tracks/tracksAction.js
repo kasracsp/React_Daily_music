@@ -22,7 +22,7 @@ const fetchTrack = (slug) => {
   return (dispatch) => {
     dispatch(fetchTracksRequest());
     axios
-      .get(`https://api.deezer.com/track/${slug}`)
+      .get(`track/${slug}`)
       .then((response) => dispatch(fetchTracksSuccess(response.data)))
       .catch((error) => dispatch(fetchTracksFailure(error.message)));
   };

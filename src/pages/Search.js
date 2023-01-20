@@ -33,14 +33,8 @@ const Search = () => {
             <Link to="/chart/albums" className="search-category-link">
               albums
             </Link>
-            <Link to="/chart/artists" className="search-category-link">
-              artists
-            </Link>
             <Link to="/chart/playlists" className="search-category-link">
               playlists
-            </Link>
-            <Link to="/chart/podcasts" className="search-category-link">
-              podcasts
             </Link>
             <Link to="/chart/tracks" className="search-category-link">
               tracks
